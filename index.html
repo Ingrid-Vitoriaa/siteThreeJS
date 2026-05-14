@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade IHC - Visualizador 3D</title>
+    <!-- Link para o CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="info">Use o Mouse para Girar, Zoom e Pan</div>
+
+    <!-- O Import Map PRECISA ficar no HTML para o navegador entender os módulos -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <!-- Chamada para o JavaScript externo (importante o type="module") -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>

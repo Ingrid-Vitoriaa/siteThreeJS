@@ -1,0 +1,19 @@
+/* Remove margens e garante que o canvas ocupe a tela toda */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    font-family: sans-serif;
+}
+
+#info {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    pointer-events: none;
+    text-shadow: 1px 1px 2px black;
+    z-index: 10; /* Garante que o texto fique na frente do 3D */
+}

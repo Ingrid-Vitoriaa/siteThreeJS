@@ -2,12 +2,12 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-// --- CONFIGURAÇÃO DA CENA ---
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x222222);
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-// Suas medidas personalizadas:
+
 camera.position.set(0, 1.5, 9); 
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -18,10 +18,10 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.2; 
 
 document.body.appendChild(renderer.domElement);
-// CORREÇÃO AQUI: O termo correto é domElement
+
 document.body.appendChild(renderer.domElement);
 
-// --- ILUMINAÇÃO ---
+
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
 scene.add(ambientLight);
 
@@ -29,20 +29,20 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
 directionalLight.position.set(5, 10, 7.5);
 scene.add(directionalLight);
 
-// --- CONTROLES ---
+
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.minDistance = 1.5;
 controls.maxDistance = 12; 
 
-// --- CARREGAMENTO DO MODELO ---
+
 const loader = new GLTFLoader();
 const modelPath = 'models/carro_2.glb';
 
 loader.load(modelPath, (gltf) => {
     const model = gltf.scene;
     
-    // Centralização automática para o carro girar no próprio eixo
+    
     const box = new THREE.Box3().setFromObject(model);
     const center = box.getCenter(new THREE.Vector3());
     model.position.x += (model.position.x - center.x);
@@ -55,14 +55,14 @@ loader.load(modelPath, (gltf) => {
     console.error('Erro ao carregar o modelo:', error);
 });
 
-// --- RESPONSIVIDADE ---
+
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// --- LOOP DE ANIMAÇÃO ---
+
 function animate() {
     requestAnimationFrame(animate);
     controls.update();
